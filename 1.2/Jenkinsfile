@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    environment {
+        DEMO = '1.0'
+    }
+
+    stages {
+        stage('Stage 1') {
+            environment {
+                RELEASE = '5'
+            }
+            steps {
+
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID"
+
+                sh "echo 'This is my first jenkins pipeline with $DEMO and $BUILD_ID'"
+
+                sh "docker --version"
+
+                sh "echo RELEASE $RELEASE"
+
+                //windows
+                // bat "docker --version"
+                // powershell "docker --version"
+                
+                
+            }
+        }
+
+        stage('Stage 2') {
+            steps {
+
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID"
+
+                sh "echo 'This is my first jenkins pipeline with $DEMO and $BUILD_ID'"
+
+                sh "docker --version"
+
+                sh "echo RELEASE $RELEASE"
+
+                //windows
+                // bat "docker --version"
+                // powershell "docker --version"
+                
+                
+            }
+        }
+    }
+}
