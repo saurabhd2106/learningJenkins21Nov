@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    environment {
+        DEMO = '1.0'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID"
+
+                
+                
+                
+            }
+
+           
+        }
+
+        stage('Test') {
+            steps {
+
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID"
+
+                
+                
+                
+            }
+
+           
+        }
+
+        stage('Deploy') {
+
+            input {
+                message "Where do you wants to deploy?"
+                ok 'Go Ahead'
+
+                parameters {
+
+                    string(defaultValue: 'PROD', description: 'Target to deploy application', name: 'name')
+
+                }
+            }
+
+           // input message: 'Do you wants to deploy?', ok: 'Go Ahead', parameters: [string(defaultValue: 'PROD', description: 'Target to deploy application', name: 'name')]
+            steps {
+
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID"
+
+                
+                
+                
+            }
+
+           
+        }
+    }
+}
