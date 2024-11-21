@@ -56,7 +56,10 @@ pipeline {
            
         }
 
-        post {
+       
+    }
+
+     post {
             always {
                 echo "I always execute"
             }
@@ -69,5 +72,4 @@ pipeline {
                 echo ""
             }
         }
-    }
 }
