@@ -1,11 +1,15 @@
 pipeline {
     agent any
 
+    environment {
+        DEMO = '1.0'
+    }
+
     stages {
         stage('Stage 1') {
             steps {
 
-                echo "This is my first jenkins pipeline"
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID}"
                 
                 
             }
