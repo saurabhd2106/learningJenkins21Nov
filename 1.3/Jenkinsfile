@@ -49,13 +49,25 @@ pipeline {
             steps {
 
                 echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID and $name"
-
-                
                 
                 
             }
 
            
+        }
+
+        post {
+            always {
+                echo "I always execute"
+            }
+
+            success {
+                echo " On Build success"
+            }
+
+            failure {
+                echo ""
+            }
         }
     }
 }
