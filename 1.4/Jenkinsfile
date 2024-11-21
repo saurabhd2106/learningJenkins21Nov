@@ -1,0 +1,43 @@
+node {
+    // Define global environment variables
+    env.RELEASE = '20.04'
+
+    try {
+        stage('Build') {
+            // Define stage-specific environment variable
+            env.LOG_LEVEL = 'INFO'
+            echo "Building release ${env.RELEASE} with log level ${env.LOG_LEVEL}..."
+        }
+
+        stage('Test') {
+            echo "Testing release ${env.RELEASE}..."
+        }
+
+        stage('Deploy') {
+            // Prompt user for deployment confirmation and collect input parameters
+            def userInput = input(
+                message: 'Deploy?',
+                ok: 'Do it!',
+                parameters: [
+                    string(name: 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment environment')
+                ]
+            )
+            echo "Deploying release ${env.RELEASE} to environment ${userInput}"
+        }
+    } catch (e) {
+        // Handle exceptions if necessary
+        echo "Pipeline failed: ${e.getMessage()}"
+        currentBuild.result = 'FAILURE'
+        throw e
+    } finally {
+
+        if(currentBuild.result == "SUCCESS") {
+            echo "Sucess block"
+        }
+        
+        // Post-action: always block
+        echo 'Prints whether deploy happened or not, success or failure'
+
+        
+    }
+}
