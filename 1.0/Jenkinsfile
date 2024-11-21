@@ -9,7 +9,7 @@ pipeline {
         stage('Stage 1') {
             steps {
 
-                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID}"
+                echo "This is my first jenkins pipeline with $DEMO and ${env.BUILD_ID} and $BUILD_ID"
                 
                 
             }
