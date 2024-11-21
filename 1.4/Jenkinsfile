@@ -31,10 +31,12 @@ node {
         throw e
     } finally {
 
+        sh "echo ${currentBuild.result}"
+
         if(currentBuild.result == "SUCCESS") {
             echo "Sucess block"
         }
-        
+
         // Post-action: always block
         echo 'Prints whether deploy happened or not, success or failure'
 
